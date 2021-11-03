@@ -29,6 +29,60 @@
 
 ---
 
+ - Annotation
+    - JPA
+        - @Entity : JPA에서 관리하는 Entity 객체로 지정, 클래스의 카멜케이스로 작성된 필드명을 언더스코어로 변환하여 테이블 매칭
+        - @Id : 맵핑될 테이블의 PK필드임을 명시
+        - @GeneratedValue : PK생성 규칙을 명시 ( @Id 와 함께 사용 )
+        - @Column : 테이블의 컬럼을 나타냄, 명시하지 않더라도 자동으로 등록 (기본값에 변경이 필요한 경우 명시하여 사용)
+    - Lombok
+        - @NoArgsConstructor : 기본 생성자 자동 생성
+        - @Getter : Getter 메소드 자동 생성
+        - @Builder : 해당 클래스의 빌드 패턴 등록, builder 패턴으로 객체 생성 시 key, value 확인 용이
+
+    ---
+
+    - JPA에서 사용되는 Entity 객체는 Setter 메소드가 없기 때문에 setKey()를 사용할 수 없다. 때문에 객체의 생성은 생성자를 통해
+DB와 연동될 객체를 생성 한다. 이 때 값의 변화가 필요하다면, 목적에 맞는 메소드를 작성하여 사용한다.
+해당 프로젝트에서는 Builder 패턴을 사용하여 객체를 생성하도록 한다.
+
+    ---
+
+- @Autowired와 생성자
+    - 이전 spring 프로젝트에서는 의존 주입을 위해 @Autowired 어노테이션을 사용하였다. ( 객체 타입과 일치하는 객체를 찾아 자동으로 주입 )
+    이 방법 외에도 setter를 사용하는 방법과 생성자를 사용하여 의존 주입을 이루는 방법이 존재한다.
+    이 중 생성자를 사용하는 방식이 권장되는 방식이며, 해당 프로젝트에서는 생성자 방식을 사용하여 의존주입 하기로 한다.
+    프로젝트에서 service class를 확인해 보면 final로 선언된 필드와 @RequiredArgsConstructor 어노테이션을 확인 할 수 있다. 해당 어노테이션은
+    final 필든 @Notnull이 붙은 필드를 인자로 받는 생성자를 자동으로 생성하게 된다.1
+    ```
+    ## 사용 예시 (출처 : https://webdevtechblog.com/)
+    @Service
+    @RequiredArgsConstructor
+    public class RequiredArgsConstructorDIServiceExample {
+      private final FirstRepository firstRepository;
+      private final SecondRepository secondRepository;
+      private final ThirdRepository thirdRepository;
+
+      // ...
+    }
+    ```
+
+    ```
+    ## 위와 같이 선언을 한다면 컴파일 과정에서서
+    @Service
+    public class RequiredArgsConstructorDIServiceExample {
+      @ConstructorProperties({"firstRepository", "secondRepository", "thirdRepository"})
+      public RequiredArgsConstructorDIServiceExample(FirstRepository firstRepository, SecondRepository secondRepository, ThirdRepository thirdRepository) {
+        this.firstRepository = firstRepository;
+        this.secondRepository = secondRepository;
+        this.thirdRepository = thirdRepository;
+      }
+    }
+    ##이와 같이 생성자가 자동으로 생성되는 것을 확인할 수 있다.
+   ```
+
+
+
 
 
 
