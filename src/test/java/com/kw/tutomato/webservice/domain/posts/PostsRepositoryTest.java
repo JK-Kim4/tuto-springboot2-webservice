@@ -26,15 +26,15 @@ public class PostsRepositoryTest {
     }
 
     @Test
-    public void 게시글저장_불러오기(){
+    public void 게시글저장_불러오기() {
         //given
         String title = "테스트 게시글";
-        String content = "테스트 컨텐츠";
+        String content = "테스트 본문";
 
         postsRepository.save(Posts.builder()
                 .title(title)
                 .content(content)
-                .author("KJW")
+                .author("jojoldu@gmail.com")
                 .build());
 
         //when
@@ -46,10 +46,10 @@ public class PostsRepositoryTest {
         assertThat(posts.getContent()).isEqualTo(content);
     }
 
-    @Test
+    /*@Test
     public void BaseTimeEntity_등록(){
         //given
-        LocalDateTime now = LocalDateTime.of(2021,10,27,0,0,0);
+        LocalDateTime now = LocalDateTime.of(2019, 6, 4, 0, 0, 0);
         postsRepository.save(Posts.builder()
                 .title("title")
                 .content("content")
@@ -61,11 +61,10 @@ public class PostsRepositoryTest {
         //then
         Posts posts = postsList.get(0);
 
-        System.out.println("############ createDate = " + posts.getCreatedDate());
-        System.out.println("############ modDate = " + posts.getModifiedDate());
+        System.out.println(">>>>>>>>> createDate=" + posts.getCreatedDate() + ", modifiedDate=" + posts.getModifiedDate());
 
         assertThat(posts.getCreatedDate()).isAfter(now);
         assertThat(posts.getModifiedDate()).isAfter(now);
 
-    }
+    }*/
 }

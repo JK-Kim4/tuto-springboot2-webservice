@@ -56,4 +56,7 @@ dependencies {
 
     //test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    //oauth test
+    testImplementation('org.springframework.security:spring-security-test')
 }
