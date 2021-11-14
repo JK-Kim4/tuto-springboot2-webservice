@@ -4,9 +4,36 @@
 > 이동욱 개발자의 '스프링부트로 웹 서비스 출시하기'를 참고하여
 > 스프링부트 / JAP / AWS 관련 기술 학습을 목표로 한다.
 
-### day 2-2 - springBoot & jap 로 간단한 api 생성
+### day 2-2 - TDD, 테스트코드 작성
 
 ---
+
+- HelloController.class와 HelloControllerTest.class
+  - HelloController에 어플리케이션 접속 확인을 위한 간단한 메소드를 작성하고, HelloControllerTest를 통해 해당 메소드가 정상적으로 동작하는지 테스트 한다.  
+  - @RestController
+    - 어노테이션이 선언 되어있는 컨트롤러를 JSON을 반환하는 컨트롤러로 만들어준다. @Controller + @ResponseBody  
+  - @RunWith(SpringRunner.class)
+    - JUnit의 내장 실행자 외 다른 실행자를 실행
+    - SpringRunner.class를 설정 함으로 Spring 실행자를 사용
+    - 스프링 부트 테스트와 JUnit의 연결자 역할  
+  - @WebMvcTest
+    - 스프링 테스트 어노테이션 중 WebMvc에 집중할 수 있도록 지원하는 어노테이션  
+  - MockMvc
+    - Web API를 테스트 하기 위해 사용
+    - HTTP GET, POST 등을 테스트 할 수 있음
+    ```
+      # Get 요청
+      mvc.perform(get("/hello"))
+      ...
+      ;
+    ```  
+    
+  - .andExpect(status.isOk())
+    - mvc.perform에 대한 결과 검증
+    - 인자로 받은 결과를 검증, 이 경우 HTTP Header의 status값을 검증한다.
+
+
+
 
 - Junit @After annotation : 테스트 케이스 완료시 각각 호출
 - Junit 5 부터 @After 어노테이션이 @AfterEach로 변경됨.

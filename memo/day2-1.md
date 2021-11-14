@@ -4,7 +4,7 @@
 > 이동욱 개발자의 '스프링부트로 웹 서비스 출시하기'를 참고하여
 > 스프링부트 / JAP / AWS 관련 기술 학습을 목표로 한다.
 
-### day 2 - springBoot & jap 로 간단한 api 생성
+### day 2 - springBoot & jpa 로 간단한 api 생성
 
 1. domain 코드생성
  - 실제 DB 테이블과 매칭될 Entity 클래스를 생성한다.
