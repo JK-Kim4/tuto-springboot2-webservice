@@ -53,6 +53,8 @@ dependencies {
     //jdbc session
     implementation('org.springframework.session:spring-session-jdbc')
 
+    //maria-db
+    implementation('org.mariadb.jdbc:mariadb-java-client')
 
     //test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
