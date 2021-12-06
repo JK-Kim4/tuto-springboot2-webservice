@@ -13,6 +13,9 @@ cache:
 
 script: "./gradlew clean build"
 
+before_deploy:
+  - chmod +x gradlew
+
 notifications:
   email:
     recipients:
