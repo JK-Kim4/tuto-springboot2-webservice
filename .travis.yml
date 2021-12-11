@@ -39,7 +39,7 @@ deploy:
     key: springboot-webservice.zip
     bundle_type: zip
     application: springboot-webservice-cd
-    deployment_group: springboot-webservice-cd-gr
+    deployment_group: springboot-webservice-cdgr
     region: ap-northeast-2
     wait-until-deployed: true
 
