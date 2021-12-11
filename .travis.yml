@@ -38,8 +38,8 @@ deploy:
     bucket: springboot-study-s3-jw
     key: springboot-webservice.zip
     bundle_type: zip
-    application: springboot-webservice
-    deployment_group: springboot-webservice-group
+    application: springboot-webservice-cd
+    deployment_group: springboot-webservice-cd-gr
     region: ap-northeast-2
     wait-until-deployed: true
 
