@@ -50,6 +50,7 @@ public class IndexController {
     @ResponseBody
     @PutMapping("/user/update/state")
     public String updateState(@RequestBody UserUpdateDto userUpdateDto){
+        log.info("User Email : " + userUpdateDto.getEmail());
         return userService.update(userUpdateDto);
     }
 }

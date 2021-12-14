@@ -16,20 +16,23 @@ var main = {
     },
     updateState : function (){
       var data = {
-          email : $("#userEmail").val(),
+          email : $("#userEmail").val()
       };
 
-      $.ajax({
+        console.log("email : " + data.email);
+
+        $.ajax({
          type : "PUT",
          url : "/user/update/state",
-         dataType : "json",
+         dataType : "text",
          contentType: 'application/json; charset=utf-8',
          data : JSON.stringify(data)
       }).done(function (){
           alert("사용자 상태 변경 완료");
           location.reload();
-      }).fail(function (){
-          alert("상태 변경 실패");
+      }).fail(function (error){
+          console.log(error);
+          alert(JSON.stringify(error));
           location.reload();
       });
     },

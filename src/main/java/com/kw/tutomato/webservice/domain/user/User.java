@@ -46,7 +46,6 @@ public class User extends BaseTimeEntity {
 
     public User updateRole(Role role){
         this.role = role;
-
         return this;
     }
 

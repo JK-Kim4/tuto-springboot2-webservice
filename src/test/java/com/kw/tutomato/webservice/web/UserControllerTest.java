@@ -68,6 +68,9 @@ public class UserControllerTest {
                         .email("test@gmail.com")
                         .build()
         );
+
+        System.out.println("userRole1 : " + saveUser.getRole());
+
         String url = "http://localhost:" + port + "/user/update/state";
         String email = "test@gmail.com";
 
@@ -82,6 +85,7 @@ public class UserControllerTest {
         //then
 
         List<User> all = userRepository.findAll();
+        System.out.println("userRole2 : " + all.get(0).getRole());
         assertThat(all.get(0).getRole()).isEqualTo(Role.USER);
     }
 }
