@@ -10,6 +10,28 @@ var main = {
         $("#btn-delete").on("click", function (){
            _this.delete();
         });
+        $("#update-state").on("click", function (){
+            _this.updateState();
+        })
+    },
+    updateState : function (){
+      var data = {
+          email : $("#userEmail").val(),
+      };
+
+      $.ajax({
+         type : "PUT",
+         url : "/user/update/state",
+         dataType : "json",
+         contentType: 'application/json; charset=utf-8',
+         data : JSON.stringify(data)
+      }).done(function (){
+          alert("사용자 상태 변경 완료");
+          location.reload();
+      }).fail(function (){
+          alert("상태 변경 실패");
+          location.reload();
+      });
     },
     save : function(){
         var data = {
